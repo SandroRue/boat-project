@@ -1,0 +1,21 @@
+<p-table [value]="boats" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-boat>
+        <tr>
+            <td>{{boat?.name}}</td>
+            <td>{{boat?.description}}</td>
+            <td><button pButton type="button" class="p-button-outlined" icon="pi pi-pencil"
+                    (click)="editBoat()"></button>
+                <button pButton type="button" class="p-button-outlined p-button-danger" icon="pi pi-trash"
+                    (click)="deleteBoat()"></button>
+
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
