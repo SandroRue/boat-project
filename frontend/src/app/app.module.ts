@@ -6,9 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { DetailPageComponent } from './components/detail-page/detail-page.component';
 import { OverviewPageComponent } from './components/overview-page/overview-page.component';
-import {TableModule} from 'primeng/table';
-import {ButtonModule} from 'primeng/button';
-
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import {ButtonModule} from 'primeng/button';
     BrowserModule,
     AppRoutingModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

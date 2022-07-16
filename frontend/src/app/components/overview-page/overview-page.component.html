@@ -1,6 +1,13 @@
+<h1>Boat Dashboard</h1>
 <p-table [value]="boats" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+    <div>
+        <button pButton type="button" icon="pi pi-plus-circle" label="Create" class="p-button-success"></button>
+    </div>
+    </ng-template>
     <ng-template pTemplate="header">
         <tr>
+            <th>Image</th>
             <th>Name</th>
             <th>Description</th>
             <th>Actions</th>
@@ -8,10 +15,13 @@
     </ng-template>
     <ng-template pTemplate="body" let-boat>
         <tr>
+            <td>
+                <div class="image-box" style="background-image: url({{boat?.image}});"></div>
+            </td>
             <td>{{boat?.name}}</td>
             <td>{{boat?.description}}</td>
             <td><button pButton type="button" class="p-button-outlined" icon="pi pi-pencil"
-                    (click)="editBoat()"></button>
+                    (click)="editBoat(boat)"></button>
                 <button pButton type="button" class="p-button-outlined p-button-danger" icon="pi pi-trash"
                     (click)="deleteBoat()"></button>
 
