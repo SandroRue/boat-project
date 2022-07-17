@@ -8,18 +8,63 @@ const main = async () => {
     const app = express()
     app.use(express.json()).use(cors()).disable("x-powered-by")
 
-    const boat = await prisma.boat.create({
-        data: {
-            id: uuid(),
-            image: 'testImage',
-            name: 'speeder1',
-            description: '50 km/h speed'
-        },
-    })
-
     const allBoats = await prisma.boat.findMany({})
 
     console.log(allBoats)
+
+    app.get("/getAllBoats", async (req: Request, res: Response) => {
+        const boats = await prisma.boat.findMany();
+        res.json(boats);
+    });
+
+    app.post("/", async (req: Request, res: Response) => {
+        const { id, image, name, description } = req.body;
+        const boat = await prisma.boat.create({
+            data: {
+                id: uuid(),
+                image: image,
+                name: name,
+                description: description
+            },
+        });
+        res.json(boat);
+    });
+
+    app.get("/:id", async (req: Request, res: Response) => {
+        const id = req.params.id
+        const boat = await prisma.boat.findUnique({
+            where: {
+                id: id,
+            }
+        }
+        );
+        res.json(boat);
+    });
+
+    app.put("/", async (req: Request, res: Response) => {
+        const { id, image, name, description } = req.body;
+        const updatedBoat = await prisma.boat.update({
+            where: {
+                id: id,
+            },
+            data: {
+                image: image,
+                name: name,
+                description: description
+            },
+        });
+        res.json(updatedBoat);
+    });
+
+    app.delete("/:id", async (req: Request, res: Response) => {
+        const id = req.params.id
+        const deletedBoat = await prisma.boat.delete({
+            where: {
+                id: id,
+            },
+        });
+        res.json(deletedBoat);
+    });
 
     app.get("/", (req, res) => res.send("OK"))
 

@@ -8,6 +8,8 @@
     "build": "rm -rf build; npm run check && tsup src/index.ts --clean --sourcemap --format cjs --out-dir build",
     "check": "tsc --noEmit",
     "serve": "dotenv -- node build/index.js",
+    "start-db": "docker-compose up -d",
+    "generate-db": "dotenv -c -- prisma generate",
     "deploy-db": "dotenv -c -- prisma migrate deploy"
   },
   "repository": {

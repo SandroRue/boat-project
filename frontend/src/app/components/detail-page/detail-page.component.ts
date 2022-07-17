@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, tap } from 'rxjs';
 import { Boat } from 'src/app/model/boat.model';
+import { BoatService } from 'src/app/services/boat.service';
 
 @Component({
   selector: 'app-detail-page',
@@ -7,13 +10,18 @@ import { Boat } from 'src/app/model/boat.model';
   styleUrls: ['./detail-page.component.scss']
 })
 export class DetailPageComponent implements OnInit {
+  boat$: Observable<Boat>
+  boat: Boat;
 
-  boat: Boat | undefined;
+  constructor(private route: ActivatedRoute, private boatService: BoatService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log(this.boat)
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.boat$ = this.boatService.getBoat(params.id).pipe(tap(boat => {
+        console.log(boat)
+      }))
+    })
+    
   }
 
 }

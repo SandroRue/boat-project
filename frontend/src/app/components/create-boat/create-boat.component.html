@@ -1,0 +1,38 @@
+<form [formGroup]="boatForm" (ngSubmit)="saveBoat(boat)">
+    <div class="space p-fluid">
+        <span class="p-float-label">
+            Add image of the boat:
+        </span>
+    </div>
+    <div class="space p-fluid">
+        <span class="p-float-label">
+            <input type="text" placeholder="Image" pInputText formControlName="image"
+                [class]="boatForm.controls['image'].valid ? '': 'ng-invalid'"/>
+        </span>
+    </div>
+    <div class="space p-fluid">
+        <span class="p-float-label">
+            Add name of the boat:
+        </span>
+    </div>
+    <div class="space p-fluid">
+        <span class="p-float-label">
+            <input type="text" placeholder="Name" pInputText formControlName="name"
+                [class]="boatForm.controls['name'].valid ? '': 'ng-invalid'"/>
+        </span>
+    </div>
+    <div class="space p-fluid">
+        <span class="p-float-label">
+            Add description of the boat:
+        </span>
+    </div>
+    <div class="space p-fluid">
+        <span class="p-float-label">
+            <input type="text" placeholder="Description" pInputText formControlName="description"
+                [class]="boatForm.controls['description'].valid ? '': 'ng-invalid'"/>
+        </span>
+    </div>
+    <div class="space">
+        <p-button type="submit" [disabled]="!boatForm.valid" label="Save" icon="pi pi-save"></p-button>
+    </div>
+</form>
