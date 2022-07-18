@@ -1,17 +1,6 @@
 <form [formGroup]="boatForm" (ngSubmit)="saveBoat(boat)">
     <div class="space p-fluid">
         <span class="p-float-label">
-            Add image of the boat:
-        </span>
-    </div>
-    <div class="space p-fluid">
-        <span class="p-float-label">
-            <input type="text" placeholder="Image" pInputText formControlName="image"
-                [class]="boatForm.controls['image'].valid ? '': 'ng-invalid'"/>
-        </span>
-    </div>
-    <div class="space p-fluid">
-        <span class="p-float-label">
             Add name of the boat:
         </span>
     </div>

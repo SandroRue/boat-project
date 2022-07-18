@@ -1,0 +1,23 @@
+<div class="space p-fluid">
+    <span class="p-float-label">
+        Change name of the boat:
+    </span>
+</div>
+<div class="space p-fluid">
+    <span class="p-float-label">
+        <input type="text" placeholder="Name" pInputText [(ngModel)]="boat.name"/>
+    </span>
+</div>
+<div class="space p-fluid">
+    <span class="p-float-label">
+        Change description of the boat:
+    </span>
+</div>
+<div class="space p-fluid">
+    <span class="p-float-label">
+        <input type="text" placeholder="Description" pInputText [(ngModel)]="boat.description"/>
+    </span>
+</div>
+<div class="space">
+    <p-button type="button" label="Save" icon="pi pi-save" (click)="saveChanges(boat)"></p-button>
+</div>

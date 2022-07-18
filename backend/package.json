@@ -10,7 +10,7 @@
     "serve": "dotenv -- node build/index.js",
     "start-db": "docker-compose up -d",
     "generate-db": "dotenv -c -- prisma generate",
-    "deploy-db": "dotenv -c -- prisma migrate deploy"
+    "migrate-db": "dotenv -c -- prisma migrate dev"
   },
   "repository": {
     "type": "git",

@@ -20,7 +20,6 @@ export class CreateBoatComponent implements OnInit {
 
   ngOnInit() {
     this.boatForm = this.fb.group({
-      'image': new FormControl('', Validators.required),
       'name': new FormControl('', Validators.required),
       'description': new FormControl('', Validators.required),
     });

@@ -15,6 +15,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditBoatComponent } from './components/edit-boat/edit-boat.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DetailPageComponent,
     OverviewPageComponent,
     CreateBoatComponent,
+    EditBoatComponent,
   ],
   imports: [
     BrowserModule,

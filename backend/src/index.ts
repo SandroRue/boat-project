@@ -18,11 +18,10 @@ const main = async () => {
     });
 
     app.post("/", async (req: Request, res: Response) => {
-        const { id, image, name, description } = req.body;
+        const { id, name, description } = req.body;
         const boat = await prisma.boat.create({
             data: {
                 id: uuid(),
-                image: image,
                 name: name,
                 description: description
             },
@@ -42,13 +41,12 @@ const main = async () => {
     });
 
     app.put("/", async (req: Request, res: Response) => {
-        const { id, image, name, description } = req.body;
+        const { id, name, description } = req.body;
         const updatedBoat = await prisma.boat.update({
             where: {
                 id: id,
             },
             data: {
-                image: image,
                 name: name,
                 description: description
             },

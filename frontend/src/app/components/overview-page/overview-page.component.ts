@@ -6,6 +6,7 @@ import { BoatService } from 'src/app/services/boat.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CreateBoatComponent } from '../create-boat/create-boat.component';
+import { EditBoatComponent } from '../edit-boat/edit-boat.component';
 
 @Component({
   selector: 'app-overview-page',
@@ -53,7 +54,36 @@ export class OverviewPageComponent implements OnInit {
     this.router.navigate(['detail-page', boat.id]);
   }
 
-  deleteBoat() {
+  editBoat(boat: Boat) {
+    const ref = this.dialogService.open(EditBoatComponent, {
+      header: 'Change the boat',
+      data: { boat },
+      width: '50%',
+      height: '70%'
+    });
+    ref.onClose.subscribe((boat: Boat) => {
+      this.getAllBoats()
+    });
+    console.log("Boat edited", boat)
+  }
+
+  deleteBoat(boat: Boat) {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete the boat?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.boatService.deleteBoat(boat.id).subscribe(() => {
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Boat Deleted', life: 3000 });
+          this.getAllBoats()
+        });
+      },
+      reject: () => {
+        if (boat) {
+          this.getAllBoats()
+        }
+      }
+    });
     console.log("Boat deleted")
   }
 

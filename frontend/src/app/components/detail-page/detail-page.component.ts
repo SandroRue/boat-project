@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { Boat } from 'src/app/model/boat.model';
 import { BoatService } from 'src/app/services/boat.service';
@@ -13,7 +13,7 @@ export class DetailPageComponent implements OnInit {
   boat$: Observable<Boat>
   boat: Boat;
 
-  constructor(private route: ActivatedRoute, private boatService: BoatService) { }
+  constructor(private route: ActivatedRoute, private boatService: BoatService, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -21,7 +21,10 @@ export class DetailPageComponent implements OnInit {
         console.log(boat)
       }))
     })
-    
+  }
+
+  backToDashboard() {
+    this.router.navigate(['']);
   }
 
 }
