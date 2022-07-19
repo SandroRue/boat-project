@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "boat-app-e2fbc": {
+      "hosting": {
+        "frontend": [
+          "boat-app-e2fbc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "boat-app-e2fbc"
+  }
+}

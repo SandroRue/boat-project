@@ -2,9 +2,11 @@
 <ng-container *ngIf="boats$ | async as boats">
     <p-table [value]="boats" responsiveLayout="scroll">
         <ng-template pTemplate="caption">
-            <div>
-                <button pButton type="button" icon="pi pi-plus-circle" label="Create" class="p-button-success"
-                    (click)="createBoat()"></button>
+            <div class="grid">
+                <div class="col-10"> <button pButton type="button" icon="pi pi-plus-circle" label="Create"
+                        class="p-button-success" (click)="createBoat()"></button></div>
+                <div class="col-2"><button pButton type="button" icon="pi pi-sign-out" label="Logout"
+                        class="p-button-outlined p-button-secondary" (click)="logoutUser()"></button></div>
             </div>
         </ng-template>
         <ng-template pTemplate="header">
@@ -20,12 +22,12 @@
                 <td>{{boat?.description}}</td>
                 <td><button pButton type="button" class="p-button-outlined" icon="pi pi-arrow-right"
                         (click)="viewBoat(boat)"></button>
-                        <button pButton type="button" class="p-button-outlined p-button-secondary" icon="pi pi-pencil"
+                    <button pButton type="button" class="p-button-outlined p-button-secondary" icon="pi pi-pencil"
                         (click)="editBoat(boat)"></button>
                     <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"
                         rejectButtonStyleClass="p-button-text"></p-confirmDialog>
-                        <button pButton type="button" class="p-button-outlined p-button-danger" icon="pi pi-trash"
-                            (click)="deleteBoat(boat)"></button>
+                    <button pButton type="button" class="p-button-outlined p-button-danger" icon="pi pi-trash"
+                        (click)="deleteBoat(boat)"></button>
 
                 </td>
             </tr>

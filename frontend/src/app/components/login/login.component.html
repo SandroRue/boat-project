@@ -1,1 +1,22 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="confirmLogin()" class="customDesign">
+    <div class="space">
+        <h4>Login</h4>
+    </div>
+    <div class="space p-fluid">
+        <span class="p-float-label">
+            <input type="text" placeholder="Email" pInputText formControlName="email"
+                [class]="loginForm.controls['email'].valid ? '': 'ng-invalid'" />
+        </span>
+    </div>
+    <div class="space p-fluid">
+        <span class="p-float-label">
+            <input type="text" placeholder="Password" pInputText formControlName="password"
+                [class]="loginForm.controls['password'].valid ? '': 'ng-invalid'" />
+        </span>
+    </div>
+
+    <div class="space">
+        <button pButton type="login" [disabled]="!loginForm.valid" icon="pi pi-save" label="Login"
+            class="p-button-success"></button>
+    </div>
+</form>

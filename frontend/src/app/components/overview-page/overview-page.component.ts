@@ -7,6 +7,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CreateBoatComponent } from '../create-boat/create-boat.component';
 import { EditBoatComponent } from '../edit-boat/edit-boat.component';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-overview-page',
@@ -26,10 +27,10 @@ export class OverviewPageComponent implements OnInit {
     public dialogService: DialogService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
+    public auth: AngularFireAuth,
   ) { }
 
   ngOnInit() {
-    console.log(this.boats)
     this.getAllBoats()
   }
 
@@ -85,6 +86,12 @@ export class OverviewPageComponent implements OnInit {
       }
     });
     console.log("Boat deleted")
+  }
+
+  logoutUser() {
+    this.auth.signOut()
+    console.log('logged out')
+    this.router.navigate(['login'])
   }
 
 }

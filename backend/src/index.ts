@@ -8,10 +8,6 @@ const main = async () => {
     const app = express()
     app.use(express.json()).use(cors()).disable("x-powered-by")
 
-    const allBoats = await prisma.boat.findMany({})
-
-    console.log(allBoats)
-
     app.get("/getAllBoats", async (req: Request, res: Response) => {
         const boats = await prisma.boat.findMany();
         res.json(boats);

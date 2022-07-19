@@ -24,7 +24,7 @@ export class DetailPageComponent implements OnInit {
   }
 
   backToDashboard() {
-    this.router.navigate(['']);
+    this.router.navigate(['overview-page']);
   }
 
 }
