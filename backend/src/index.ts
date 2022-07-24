@@ -14,7 +14,11 @@ const main = async () => {
     });
 
     app.post("/", async (req: Request, res: Response) => {
-        const { id, name, description } = req.body;
+        if (!req.body.name || !req.body.description) {
+            res.status(400).send('Name & Description are required')
+            return
+        }
+        const { name, description } = req.body;
         const boat = await prisma.boat.create({
             data: {
                 id: uuid(),
@@ -37,6 +41,10 @@ const main = async () => {
     });
 
     app.put("/", async (req: Request, res: Response) => {
+        if (!req.body.id || !req.body.name || !req.body.description) {
+            res.status(400).send('ID, Name & Description are required')
+            return
+        }
         const { id, name, description } = req.body;
         const updatedBoat = await prisma.boat.update({
             where: {
@@ -51,6 +59,10 @@ const main = async () => {
     });
 
     app.delete("/:id", async (req: Request, res: Response) => {
+        if (!req.body.id) {
+            res.status(400).send('ID is required')
+            return
+        }
         const id = req.params.id
         const deletedBoat = await prisma.boat.delete({
             where: {
