@@ -1,5 +1,7 @@
 The application has an Angular frontend, a NodeJS backend, and a Postgres database (which is running in a docker container). Authentication is done via Firebase Authentication.
 
+The application can be found here: https://boat-frontend.onrender.com/
+
 # Backend
 
 The first step is to download the project and install the dependencies:
