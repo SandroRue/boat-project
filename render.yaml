@@ -20,7 +20,7 @@ services:
     env: static
     buildCommand:
       cd frontend && yarn install --frozen-lockfile && yarn build --configuration production
-    staticPublishPath: ./frontend/dist
+    staticPublishPath: ./frontend/dist/frontend
     # domains:
     #   - clubmaster.io
     envVars:
