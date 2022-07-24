@@ -11,7 +11,7 @@
     "start-db": "docker-compose up -d",
     "generate-db": "dotenv -c -- prisma generate",
     "migrate-db": "dotenv -c -- prisma migrate dev",
-    "deploy-db": "dotenv -c -- prisma migrate deploy"
+    "deploy-db": "prisma migrate deploy"
   },
   "repository": {
     "type": "git",
