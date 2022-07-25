@@ -15,7 +15,7 @@ const main = async () => {
 
     app.post("/", async (req: Request, res: Response) => {
         if (!req.body.name || !req.body.description) {
-            res.status(400).send('Name & Description are required')
+            res.status(400).send('Name & Description are required').json()
             return
         }
         const { name, description } = req.body;
@@ -42,7 +42,7 @@ const main = async () => {
 
     app.put("/", async (req: Request, res: Response) => {
         if (!req.body.id || !req.body.name || !req.body.description) {
-            res.status(400).send('ID, Name & Description are required')
+            res.status(400).send('ID, Name & Description are required').json()
             return
         }
         const { id, name, description } = req.body;
