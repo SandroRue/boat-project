@@ -59,10 +59,6 @@ const main = async () => {
     });
 
     app.delete("/:id", async (req: Request, res: Response) => {
-        if (!req.body.id) {
-            res.status(400).send('ID is required').json()
-            return
-        }
         const id = req.params.id
         const deletedBoat = await prisma.boat.delete({
             where: {
